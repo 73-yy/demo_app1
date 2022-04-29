@@ -6,21 +6,54 @@ import { Setting } from "../components/pages/Setting";
 import { Page404 } from "../components/pages/Page404";
 import { Layout } from "../components/pages/Layout";
 import { UserManagement } from "../components/pages/UserManagement";
-import { Header } from "../components/organisms/layout/Header";
+import { HeaderLayout } from "../components/templates/HeaderLayout";
 
 export const Router: VFC = memo(() => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="home" element={<Layout />}>
-        <Header>
-          <Route index element={<Home />} />
-          <Route path="user_management" element={<UserManagement />} />
-          <Route path="setting" element={<Setting />} />
-          <Route path="*" element={<Page404 />} />
-        </Header>
+        <Route
+          index
+          element={
+            <HeaderLayout>
+              <Home />
+            </HeaderLayout>
+          }
+        />
+        <Route
+          path="user_management"
+          element={
+            <HeaderLayout>
+              <UserManagement />
+            </HeaderLayout>
+          }
+        />
+        <Route
+          path="setting"
+          element={
+            <HeaderLayout>
+              <Setting />
+            </HeaderLayout>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <HeaderLayout>
+              <Page404 />
+            </HeaderLayout>
+          }
+        />
       </Route>
-      <Route path="*" element={<Page404 />} />
+      <Route
+        path="*"
+        element={
+          <HeaderLayout>
+            <Page404 />
+          </HeaderLayout>
+        }
+      />
     </Routes>
   );
 });
