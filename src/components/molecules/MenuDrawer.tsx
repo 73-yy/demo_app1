@@ -23,7 +23,6 @@ export const MenuDrawer: VFC<Props> = memo((props) => {
     onClickUserManagement,
     onClickSetting
   } = props;
-  console.log(isOpen);
   return (
     <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay>
